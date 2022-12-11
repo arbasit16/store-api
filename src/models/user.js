@@ -10,7 +10,12 @@ const schema = mongoose.Schema({
         type: String,
         unique: true
     },
-    password: String
+    password: String,
+    type: {
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user'
+    }
 })
 
 

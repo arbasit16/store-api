@@ -32,6 +32,7 @@ class AuthService {
         const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS)
         user.password = hashedPassword
         user.isVerified = false
+        user.type = 'user'
         const createdUser = await User.create(user)
         createdUser.password = undefined
         createdUser.__v = undefined
