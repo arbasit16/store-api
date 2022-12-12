@@ -38,7 +38,19 @@ async function verificationHandler(req, res, next) {
 
 }
 
+async function verifyAdmin(req, res, next) {
+
+    let user = req.user
+    
+    if (user.type == 'admin') {
+        next()
+    } else {
+        next(new AuthorizationError('You cannot access this resource'))
+    }
+}
+
 module.exports = {
     authHandler,
-    verificationHandler
+    verificationHandler,
+    verifyAdmin
 }
