@@ -12,6 +12,7 @@ const subscriber = require('./subscriber')
 const authRouter = require('./routers/auth')
 const userRouter = require('./routers/user')
 const verificationRouter = require('./routers/verification')
+const productRouter = require('./routers/product')
 
 const errorHandler = require('./middleware/error-handler')
 const auth = require('./middleware/auth')
@@ -35,6 +36,8 @@ app.use(auth.authHandler)
 
 app.use('/user/verify', verificationRouter)
 app.use('/user', userRouter)
+
+app.use('/products', productRouter)
 
 app.use(errorHandler)
 

@@ -4,11 +4,10 @@ const mongoose = require('mongoose')
 const config = require('./config')
 
 const dbUrl = `mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@${config.DB_HOST}/${config.DB_NAME}`
+console.log(dbUrl)
 
-function connect() {
-    mongoose.connect(dbUrl)
-            .then(() => { console.log('DB Connected') })
-            .catch((error) => { console.log(error) })
+async function connect() {
+    await mongoose.connect(dbUrl)
 }
 
 module.exports.connect = connect
