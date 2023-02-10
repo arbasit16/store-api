@@ -7,6 +7,7 @@ const dbUrl = `mongodb+srv://${config.DB_USERNAME}:${config.DB_PASSWORD}@${confi
 console.log(dbUrl)
 
 async function connect() {
+    mongoose.set('strictQuery', false)
     await mongoose.connect(dbUrl)
 }
 

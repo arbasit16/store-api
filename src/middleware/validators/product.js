@@ -5,14 +5,31 @@ const { checkValidationResult } = require('./helpers')
 
 const createProduct = [
     validator.check('name').exists().withMessage('name is required').isString('name must be alphanumeric').bail(),
-    validator.check('variations').isArray({min: 1}).withMessage('Atleast 1 variation is required').bail(),
-    validator.check('variations.*.type').isString().bail(),
-    validator.check('variations.*.value').isString().bail(),
-    validator.check('variations.*.price').isNumeric().bail(),
-    validator.check('variations.*.inStock').isBoolean().bail(),
+    validator.check('keywords').isArray({ min: 1 }).withMessage('keywords are required').bail(),
+    checkValidationResult
+]
+
+const createVariation = [
+    validator.check('type').exists().withMessage('type is required').bail().isString('type must be string').bail(),
+    validator.check('value').exists().withMessage('value is required').bail().isString('value must be string').bail(),
+    validator.check('price').exists().withMessage('price is required').bail().isNumeric().withMessage('value must be numeric').bail(),
+    validator.check('inStock').exists().withMessage('inStock is required').bail().isBoolean().bail(),
+    validator.check('images').custom((value, { req }) => {
+        if (req.files == undefined || req.files.length == 0) {
+            return false
+        }
+        return true
+    }).withMessage('images is required')
+    .bail()
+    .custom((value, { req }) => {
+        return req.files.every((file) => file.mimetype === 'image/jpeg')
+    })
+    .withMessage('uploaded files must be jpeg images')
+    , 
     checkValidationResult
 ]
 
 module.exports = {
-    createProduct
+    createProduct,
+    createVariation
 }

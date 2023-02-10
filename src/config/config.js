@@ -17,9 +17,6 @@ const SMTP_USERNAME = process.env.SMTP_USERNAME
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 const DEFAULT_PASSWORD = process.env.DEFAULT_PASSWORD
 
-console.log(DB_NAME)
-console.log(DEFAULT_PASSWORD)
-
 module.exports = {
     PORT,
     TOKEN_SECRET,

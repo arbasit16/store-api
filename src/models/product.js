@@ -12,6 +12,9 @@ const variation = mongoose.Schema({
 
 const schema = mongoose.Schema({
     name: String,
+    description: String,
+    keywords: [String],
+    isActive: { type: Boolean, default: false },
     variations: [variation],
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
