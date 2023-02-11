@@ -45,7 +45,6 @@ class VerificationService {
         const userId = user._id.toString()
         const verificationCode = await VerificationCode.findOne({ userId: userId })
 
-        console.log(verificationCode)
         if (verificationCode == null) {
             throw new ValidationError('Invlaid verification code')
         }
