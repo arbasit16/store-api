@@ -16,6 +16,11 @@ const SMTP_PORT = process.env.SMTP_PORT
 const SMTP_USERNAME = process.env.SMTP_USERNAME
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD
 const DEFAULT_PASSWORD = process.env.DEFAULT_PASSWORD
+const AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY
+const AWS_SECRET_KEY = process.env.AWS_SECRET_KEY
+const AWS_REGION = process.env.AWS_REGION
+const AWS_S3_BUCKET = process.env.AWS_S3_BUCKET
+const S3_SIGNED_URL_EXPIRATION = process.env.S3_SIGNED_URL_EXPIRATION
 
 module.exports = {
     PORT,
@@ -31,5 +36,10 @@ module.exports = {
     SMTP_PORT,
     SMTP_USERNAME,
     SMTP_PASSWORD,
-    DEFAULT_PASSWORD
+    DEFAULT_PASSWORD,
+    AWS_ACCESS_KEY,
+    AWS_SECRET_KEY,
+    AWS_REGION,
+    AWS_S3_BUCKET,
+    S3_SIGNED_URL_EXPIRATION
 }

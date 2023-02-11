@@ -29,7 +29,17 @@ const createVariation = [
     checkValidationResult
 ]
 
+const getProducts = [
+    validator.query('page').optional().isNumeric().withMessage('page must be a numbers').bail()
+    .custom((value) => value >= 1 ).withMessage('page must be greater than 0'),
+    validator.query('limit').optional().isNumeric().withMessage('limit must be a numbers').bail()
+    .custom((value) => value >= 1 ).withMessage('limit must be greater than 0'),
+    validator.query('query').optional().isString().withMessage('query must be a string'),
+    checkValidationResult
+]
+
 module.exports = {
     createProduct,
-    createVariation
+    createVariation,
+    getProducts
 }

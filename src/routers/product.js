@@ -7,6 +7,12 @@ const validator = require('../middleware/validators/product')
 const multer = require('multer')
 const upload = multer()
 
+router.get(
+    '/',
+    validator.getProducts,
+    controller.getProducts
+)
+
 router.post(
     '/',
      auth.verifyAdmin, 
@@ -16,6 +22,7 @@ router.post(
 
 router.post(
     '/:productId/variations',
+    auth.verifyAdmin, 
     upload.array('images'),
     validator.createVariation,
     controller.createVariation

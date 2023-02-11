@@ -22,6 +22,8 @@ const schema = mongoose.Schema({
     }
 }, { timestamps: true })
 
+schema.index({ name: 'text', description: 'text', keywords: 'text'})
+
 module.exports = mongoose.model('Product', schema)
 
 
