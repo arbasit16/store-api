@@ -28,4 +28,9 @@ router.post(
     controller.createVariation
 )
 
+router.get(
+    '/:productId',
+    controller.getProduct
+)
+
 module.exports = router

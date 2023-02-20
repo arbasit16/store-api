@@ -27,8 +27,16 @@ function getProducts(req, res, next) {
     .catch((error) => next(error))
 }
 
+function getProduct(req, res, next) {
+    let productId = req.params.productId
+    productService.getProduct(productId)
+    .then((product) => res.json(product))
+    .catch((error) => next(error))
+}
+
 module.exports = {
     createProduct,
     createVariation,
-    getProducts
+    getProducts,
+    getProduct
 }

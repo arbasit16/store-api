@@ -75,6 +75,15 @@ class ProductService {
 
         return  signedProducts
     }
+
+    async getProduct(id) {
+        let product = await Product.findById(id)
+        if (product == null) {
+            throw new ResourceNotFoundError('product not found')
+        }
+        let updatedProduct = await this.updateProductImageUrls(product)
+        return updatedProduct
+    }
 }
 
 module.exports = ProductService
